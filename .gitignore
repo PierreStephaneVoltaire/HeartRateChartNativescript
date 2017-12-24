@@ -1,0 +1,26 @@
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+platforms/
+node_modules/
+jspm_packages/
+
+# Typescript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Output of 'npm pack'
+*.tgz
+
+
+# dotenv environment variables file
+.env
+
+
+.vscode
+.cloud
+app/**/*.js

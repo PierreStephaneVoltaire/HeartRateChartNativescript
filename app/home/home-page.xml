@@ -1,0 +1,25 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+        xmlns:chart="nativescript-pro-ui/chart" 
+
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    
+  
+            <StackLayout class="page-content">
+               <chart:RadCartesianChart id="heartRateChart" class="chart">
+                                <chart:RadCartesianChart.series>
+                                    <chart:SplineSeries selectionMode="DataPoint" showLabels="true" items="{{ HeartRateSource }}" categoryProperty="timestamp" valueProperty="bpm">
+                                        <chart:SplineSeries.horizontalAxis >
+                                            <chart:DateTimeCategoricalAxis allowPan="false" allowZoom="true" majorStep="Day" dateFormat="MMM d" labelFitMode="Rotate" labelRotationAngle="1.2" />
+                                        </chart:SplineSeries.horizontalAxis>
+                                        <chart:SplineSeries.verticalAxis>
+                                            <chart:LinearAxis id="verBarAxis"/>
+                                        </chart:SplineSeries.verticalAxis>
+                                    </chart:SplineSeries>
+                                </chart:RadCartesianChart.series>
+                            </chart:RadCartesianChart>
+                            <Button  text="add" tap="{{addNewReading}}"/>
+            </StackLayout>
+   
+</Page>
