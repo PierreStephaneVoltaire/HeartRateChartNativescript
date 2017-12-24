@@ -8,7 +8,7 @@ import { ObservableProperty } from "../home/observable-property-decorator";
 
 export class HomeViewModel extends Observable {
     //Data source Array
-    @ObservableProperty() HeartRateSource: ObservableArray<HeartRate>
+    @ObservableProperty() HeartRateSource: ObservableArray<any>
 /**
  * Creates an instance of HomeViewModel.
  * @description initializes the data source array 
@@ -17,8 +17,9 @@ export class HomeViewModel extends Observable {
 constructor() {
         super();
         this.HeartRateSource = new ObservableArray<any>();
+    /*not entirely sure if DateTimeCategoricalAxis takes miliseconds like DateTimeContinuousAxis. Android seems to be fine with just a regular Date.
+    and iOS doesn't crash when i initialize the data source*/
         let existingHeartRates = [new HeartRate(123, new Date(1514111242318)), new HeartRate(45, new Date(1514711242318)), new HeartRate(87, new Date(154416242318))]
-        this.HeartRateSource = new ObservableArray<any>();
         if (existingHeartRates.length > 0) {
             existingHeartRates.forEach((element) => {
                 this.HeartRateSource.push(element);
@@ -41,8 +42,8 @@ addNewReading(): void {
             if (r.result) {
                 let reading: number = Number(r.text)
                 if (!Number.isNaN(reading) && reading > 0) {
-                    let MyNewReadin: HeartRate = new HeartRate(reading, new Date());
-                    this.HeartRateSource.push(MyNewReadin);//crashes on ios
+                    const MyNewReading: HeartRate = new HeartRate(reading, new Date());
+                    this.HeartRateSource.push(MyNewReading);//crashes on ios
                 }
             }
         });
